@@ -1,0 +1,15 @@
+def Ans(txt):
+    if txt == txt.lower():
+        rs = 'All Lowercase'
+    elif txt == txt.upper():
+        rs = 'All Caps'
+    elif txt == txt.capitalize():
+        rs = 'Sentence Case'
+    elif txt == txt.title():
+        rs = 'Start Case'
+    else:
+        rs = 'Mixed Case'
+    return rs
+
+df =xl("A1:A10", headers=True)
+df.Sentence.apply(Ans).tolist()
