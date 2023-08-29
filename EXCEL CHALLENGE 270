@@ -8,7 +8,7 @@ def Ans(txt):
     elif txt == txt.title():
         rs = 'Start Case'
     else:
-        rs = 'No match'
+        rs = 'Mixed Case'
     return rs
 
 df =xl("A1:A10", headers=True)
