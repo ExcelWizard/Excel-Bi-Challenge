@@ -1,0 +1,21 @@
+df = xl("A1:B18", headers = True)
+l = df.Serial.tolist()
+def stw(s):
+    return len(list(filter(lambda x: x.startswith(s),l)))
+def scan(txt):
+    sp = txt.split('.')
+    rs =[sp[0]]
+    for i in range(1,txt.count('.')+2):
+        s = '.'.join(sp[:i])
+        rs.append(df[df.Serial == s].Names.tolist()[0])
+    return rs
+
+sn =[]
+for tx in list(filter(lambda x: stw(x + '.')==0,l)):
+    sn.append(scan(tx))
+rs = pd.DataFrame(sn)
+h =['Serial']
+for i in range(1,len(rs.columns)):
+    h.append('Name' +  str(i))
+rs.columns = h
+rs
